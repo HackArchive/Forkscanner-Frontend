@@ -5,10 +5,12 @@ import btc from "../assests/btc.png";
 import lt from "../assests/lightning.png";
 
 function Navbar(props) {
-  const classData = props;
+  // const classData = props;
+  const activeClass='flex bg-[#282828] text-emerald-500 rounded-t-xl font-semibold ' 
+  const inActiveClass='flex hover:bg-[#00897b] rounded-t-xl'
 
   return (
-    <section className="">
+    <section className="fixed w-full">
       <div className="flex flex-row pt-2 px-5 bg-[#00564d] text-white">
         <NavLink className="flex flex-row mr-auto pb-2" to="/bitcoin">
           <img src={logo} alt="btc logo" className="w-12 h-12 p-1 px-1" />
@@ -17,7 +19,7 @@ function Navbar(props) {
 
         <NavLink
           className={({ isActive }) =>
-            isActive ? classData.activeClass : classData.inActiveClass
+            isActive ? activeClass : inActiveClass
           }
           to="/bitcoin"
         >
@@ -29,7 +31,7 @@ function Navbar(props) {
 
         <NavLink
           className={({ isActive }) =>
-            isActive ? classData.activeClass : classData.inActiveClass
+            isActive ? activeClass : inActiveClass
           }
           to="/lightning"
         >

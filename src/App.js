@@ -6,9 +6,9 @@ import Navbar from './routes/Navbar'
 
 function App() {
   return (
-    <section className='bg-[#282828] h-screen overflow-hidden'>
+    <section className='bg-[#282828]'>
       <BrowserRouter>
-      <Navbar activeClass='flex bg-[#282828] text-emerald-500 rounded-t-xl font-semibold ' inActiveClass='flex hover:bg-[#00897b] rounded-t-xl '/>
+      <Navbar />
         <Routes>
           <Route path='/' element={<Bitcoin/>} />
           <Route path='/bitcoin' element={<Bitcoin/>} />
