@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Bitcoin from './routes/Bitcoin'
+import Lightning from './routes/Lightning'
+import Navbar from './routes/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <section className='bg-[#282828] h-screen overflow-hidden'>
+      <BrowserRouter>
+      <Navbar activeClass='flex bg-[#282828] text-emerald-500 rounded-t-xl font-semibold ' inActiveClass='flex hover:bg-[#00897b] rounded-t-xl '/>
+        <Routes>
+          <Route path='/' element={<Bitcoin/>} />
+          <Route path='/bitcoin' element={<Bitcoin/>} />
+          <Route path='/lightning' element={<Lightning/>} />
+        </Routes>
+      </BrowserRouter>
+    </section>
+  )
 }
 
-export default App;
+export default App
