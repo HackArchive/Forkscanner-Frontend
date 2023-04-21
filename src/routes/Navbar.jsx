@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assests/logo.png";
 import btc from "../assests/btc.png";
 import lt from "../assests/lightning.png";
+import server from "../assests/server.webp";
 
 function Navbar(props) {
   // const classData = props;
@@ -12,7 +13,7 @@ function Navbar(props) {
   return (
     <section className="fixed w-full">
       <div className="flex flex-row pt-2 px-5 bg-[#00564d] text-white">
-        <NavLink className="flex flex-row mr-auto pb-2" to="/bitcoin">
+        <NavLink className="flex flex-row pb-2 mr-auto" to="/bitcoin">
           <img src={logo} alt="btc logo" className="w-12 h-12 p-1 px-1" />
           <div className="font-semibold text-3xl my-auto pl-2">ForkScanner</div>
         </NavLink>
@@ -44,6 +45,23 @@ function Navbar(props) {
             <div className="">Lightning</div>
           </div>
         </NavLink>
+
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? activeClass : inActiveClass
+          }
+          to="/nodes"
+        >
+          <div className="flex flex-row w-36 m-auto justify-center">
+            <img
+              src={server}
+              alt="nodes logo"
+              className="w-8 h-8 mx-2 "
+            />
+            <div className="">Manage Nodes</div>
+          </div>
+        </NavLink>
+
       </div>
     </section>
   );

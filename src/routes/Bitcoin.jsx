@@ -1,34 +1,74 @@
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
+import { GlobalContext } from "../App";
+import { get_block } from "../utils";
 
 function Bitcoin() {
-  const nodeinfo = {
-    Height: "786,363",
-    "Miner timestamp": "2023-04-21 09:02:56 UTC",
-    "First seen": "09:03:07 UTC",
-    "Mined by": "AntPool",
-    "Accumulated log2(PoW)": "94.133674",
-    Size: "2.83 MB",
-    "Transaction count": "2,894",
-    Fees: "0.04756780 BTC",
-  };
+
+  const {nodes,chainTips} = useContext(GlobalContext);
+  const [filterNode,setFilterNode] = useState(null);
+  const [blockInfo,setBlockInfo] = useState({hash:null});
+
+  const getChainTip = (node)=>{
+    console.log(node);
+
+      for(let i=0;i<=chainTips.length;i++){
+        if (chainTips[i]!==undefined && chainTips[i].node == node){
+          console.log(node);
+          setBlockInfo(chainTips[i]);
+          get_block(chainTips[i].block)
+          .then(result=>{
+            if (result.length !== 0){
+              setBlockInfo(result[0]);
+              console.log(result)
+            }
+          })
+          .catch(err => console.log(err))
+            }
+      }
+  }
+
+  
+
+  useEffect(()=>{
+    if (nodes.length==0){
+      console.log("no nodes in the database")
+    }
+    else{
+      setFilterNode(nodes[0]);
+    }
+  },[nodes])
+  
+  useEffect(()=>{
+    if (filterNode!==undefined){
+      getChainTip(filterNode);
+    }
+  },[filterNode])
+
+
   return (
-    <section className="pt-20 mx-5 lg:mx-72 overflow-y-auto">
-      <div className="flex shadow-xl bg-secondary rounded-3xl w-full h-16 mt-10 text-white">
-        <span className="my-auto px-1">
-          ChainTip
-        </span>
+    <>
+      <div className="flex w-full h-min justify-between items-center mt-10">
+        <div className="flex shadow-xl bg-secondary rounded-3xl w-[85%] h-16  text-white  items-center">
+          <span className="my-auto px-5 text-xl">
+            <strong>ChainTip:</strong> {blockInfo && blockInfo.hash}
+          </span>
+        </div>
+        <div className="w-[100px] h-[50px] p-1">
+          <select name="node_id" onChange={(event)=>{setFilterNode(event.target.value)}} className="w-full h-full">
+            {
+              nodes.map(node_id=><option value={`${node_id}`}>{node_id}</option>)
+            }
+            
+          </select>
+        </div>
       </div>
       <div className=" shadow-xl bg-secondary rounded-3xl w-full h-fit mt-10 ">
         <div className="flex flex-col text-white p-5 gap-2 divide-y divide-primary">
-          <span className="py-1">Height : {nodeinfo["Height"]}</span>
-          <span className="py-1">Miner timestamp : {nodeinfo["Miner timestamp"]}</span>
-          <span className="py-1">First seen : {nodeinfo["First seen"]}</span>
-          <span className="py-1">Mined by : {nodeinfo["Mined by"]}</span>
-          <span className="py-1">Accumulated log2(PoW) : {nodeinfo["Accumulated log2(PoW)"]}</span>
-          <span className="py-1">Size : {nodeinfo["Size"]}</span>
-          <span className="py-1">Transaction count : {nodeinfo["Transaction count"]}</span>
-          <span className="py-1">Fees : {nodeinfo["Fees"]}</span>
-
+          <span className="py-1">Height : {blockInfo && blockInfo.height}</span>
+          <span className="py-1">Fees : {blockInfo && blockInfo.total_fee} BTC</span>
+          <span className="py-1">Pool Name : {blockInfo && blockInfo.pool_name}</span>
+          <span className="py-1">First seen by : {blockInfo && blockInfo.first_seen_by}</span>
+          <span className="py-1">Miner Work : {blockInfo && blockInfo.work}</span>
         </div>
       </div>
       <div className="flex lg:flex-row flex-col lg:gap-5">
@@ -37,7 +77,7 @@ function Bitcoin() {
         <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
       </div>
       <div className="p-10" />
-    </section>
+    </>
   );
 }
 
