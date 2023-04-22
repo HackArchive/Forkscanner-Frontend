@@ -1,11 +1,22 @@
-import { BiWifi } from "react-icons/bi";
-
+import { useEffect, useContext } from "react";
+import { GlobalContext } from "../App";
 
 export default function Monitor() {
 
-    return (
-        <div className="w-full h-full flex flex-col text-white items-center">
+    const {setNotificationPermission,setNotification,notificationPermission} = useContext(GlobalContext);
 
+    useEffect(()=>{
+        Notification.requestPermission((status)=>{
+            if (status==="granted" && notificationPermission===false){
+                setNotificationPermission(true);
+                setNotification([{id:1,title:"RSS Notifications Enables", message:"you will now recieve subscribed notifications from forkscanner."}])
+            }
+        });
+    },[])
+
+    return (
+
+        <div className="w-full h-full flex flex-col text-white items-center">
             <div className="flex flex-col mt-10 ml-10 w-1/2">
                 <p className="text-5xl font-bold">Browser push notifications</p>
                 <p className="text-xl mt-2">We currently send browser push notifications for invalid blocks, stale candidates and unexpected extra inflation.</p>

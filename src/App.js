@@ -6,6 +6,8 @@ import Navbar from './routes/Navbar'
 import ManageNodes from './routes/ManageNodes'
 import Blocks from './routes/Blocks'
 import Monitor from './routes/Monitor'
+import Notification from './components/Notification'
+import Subscriptions from './socket'
 
 export const GlobalContext = createContext({});
 
@@ -15,14 +17,19 @@ function App() {
   const [nodes,setNodes] = useState([]);
   const [chainTips,setChainTips] = useState([]);
   const [blockInfo, setBlockInfo] = useState({ hash: null });
+  const [notification,setNotification] = useState([]); // {title:"hello",message:"hello"}
+  const [notificationPermission,setNotificationPermission] = useState(false);
 
   const contextData = {
     nodes,
     chainTips,
     blockInfo,
+    notificationPermission,
     setNodes,
     setChainTips,
-    setBlockInfo
+    setBlockInfo,
+    setNotificationPermission,
+    setNotification
   }
 
   const populateNodeData = async ()=>{
@@ -36,6 +43,12 @@ function App() {
     populateNodeData();
   },[])
 
+  useEffect(()=>{
+    if (notificationPermission===true){
+      Subscriptions(notification,setNotification);
+    }
+  },[notificationPermission])
+
 
   return (
     <section className='bg-primary'>
@@ -43,6 +56,13 @@ function App() {
         <GlobalContext.Provider value={contextData}>
           <Navbar />
           <div className="pt-20 overflow-y-auto h-[100vh]">
+
+            <div className='w-[20vw] h-full fixed bg-transparent bg-red-600 right-0 top-20'>
+              {
+              notification.map(nt => (<Notification notification={nt} notifications={notification} setNotification={setNotification}/>))
+              } 
+            </div>
+
             <Routes>
               <Route path='/' element={<Bitcoin/>} />
               <Route path='/bitcoin' element={<Bitcoin/>} />
