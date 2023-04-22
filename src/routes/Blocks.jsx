@@ -57,7 +57,7 @@ function Blocks() {
   const handleOnClose = () => setModalVisibility(false);
 
   return (
-    <section className="mx-5 lg:mx-60 mb-10">
+    <section className="mx-5 lg:mx-40 xl:mx-60 mb-10">
       <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
         <SubmitBlockForm setHideForm={setHideForm} />
       </div>
@@ -93,95 +93,94 @@ function Blocks() {
         </button>
       </div>
 
-      {window.innerWidth < 1000 && (
-        <div className="flex flex-col gap-4">
-          {blocks.map((info) => (
-            <button
-              onClick={() => {
-                setModalVisibility(true);
-                setModalInfo(info);
-              }}
+      {/* mobile */}
+      <div className="flex flex-col gap-4 md:hidden">
+        {blocks.map((info) => (
+          <button
+            onClick={() => {
+              setModalVisibility(true);
+              setModalInfo(info);
+            }}
+          >
+            <div
+              id={info.height}
+              className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2"
             >
-              <div
-                id={info.height}
-                className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2"
-              >
-                <div className="flex flex-row ">
-                  <div className="text-gray-400 font-semibold">Height</div>
-                  <span className="ml-auto">{info.height}</span>
-                </div>
-                <div className="flex flex-row ">
-                  <div className="text-gray-400 font-semibold">Work</div>
-                  <span className="ml-auto"> {parseInt(info.work, 16)}</span>
-                </div>
-                <div className="flex flex-row ">
-                  <div className="text-gray-400 font-semibold">Seen By</div>
-                  <span className="ml-auto"> {info.first_seen_by}</span>
-                </div>
-                <div className="flex flex-row justify-stretch">
-                  <span className="text-gray-400 font-semibold">Pool Name</span>
-                  <span className="ml-auto"> {info.pool_name}</span>
-                </div>
-                <div className="flex flex-row ">
-                  <div className="text-gray-400 font-semibold">Fees</div>
-                  <span className="ml-auto"> {info.total_fee}</span>
-                </div>
+              <div className="flex flex-row ">
+                <div className="text-gray-400 font-semibold">Height</div>
+                <span className="ml-auto">{info.height}</span>
               </div>
-            </button>
-          ))}
-        </div>
-      )}
+              <div className="flex flex-row ">
+                <div className="text-gray-400 font-semibold">Work</div>
+                <span className="ml-auto"> {parseInt(info.work, 16)}</span>
+              </div>
+              <div className="flex flex-row ">
+                <div className="text-gray-400 font-semibold">Seen By</div>
+                <span className="ml-auto"> {info.first_seen_by}</span>
+              </div>
+              <div className="flex flex-row justify-stretch">
+                <span className="text-gray-400 font-semibold">Pool Name</span>
+                <span className="ml-auto"> {info.pool_name}</span>
+              </div>
+              <div className="flex flex-row ">
+                <div className="text-gray-400 font-semibold">Fees</div>
+                <span className="ml-auto"> {info.total_fee}</span>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
 
-      {window.innerWidth >= 1000 && (
-        <div className="flex flex-col gap-4 items-center overflow-y-auto ">
-          <div className="flex shadow-xl bg-secondary rounded-xl h-16  text-white  ">
-            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
-              Height
-            </span>
-            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-[32rem]">
-              Work
-            </span>
-            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-44">
-              Seen By
-            </span>
-            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
-              Pool Name
-            </span>
-            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
-              Fees
-            </span>
-          </div>
-          {blocks.map((info) => (
-            <button
-              onClick={() => {
-                setModalVisibility(true);
-                setModalInfo(info);
-              }}
-            >
-              <div
-                id={info.height}
-                className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white "
-              >
-                <div className="my-auto px-5 text-base  text-left lg:w-40">
-                  {info.height}
-                </div>
-                <div className="my-auto px-5 text-base  text-left lg:w-[32rem]">
-                  {parseInt(info.work, 16)}
-                </div>
-                <div className="my-auto px-5 text-base  text-left lg:w-44">
-                  {info.first_seen_by}
-                </div>
-                <div className="my-auto px-5 text-base  text-left lg:w-40">
-                  {info.pool_name}
-                </div>
-                <div className="my-auto px-5 text-base  text-left lg:w-40">
-                  {info.total_fee}
-                </div>
-              </div>
-            </button>
-          ))}
+      {/* desktop */}
+      <div className="md:flex flex-col w-full gap-4 items-center overflow-y-auto hidden">
+        <div className="flex w-full justify-evenly shadow-xl bg-secondary rounded-xl h-16  text-white  ">
+          <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-40">
+            Height
+          </span>
+          <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-[32rem]">
+            Work
+          </span>
+          <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-44">
+            Seen By
+          </span>
+          <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-40">
+            Pool Name
+          </span>
+          <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-40">
+            Fees
+          </span>
         </div>
-      )}
+        {blocks.map((info) => (
+          <button
+            onClick={() => {
+              setModalVisibility(true);
+              setModalInfo(info);
+            }}
+            className="w-full"
+          >
+            <div
+              id={info.height}
+              className="flex w-full justify-evenly shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white "
+            >
+              <div className="my-auto px-5 text-base  text-left lg:w-30 xl:w-40">
+                {info.height}
+              </div>
+              <div className="my-auto px-5 text-base  text-left lg:w- xl:w-[32rem]">
+                {parseInt(info.work, 16)}
+              </div>
+              <div className="my-auto px-5 text-base  text-left lg:w- xl:w-44">
+                {info.first_seen_by}
+              </div>
+              <div className="my-auto px-5 text-base  text-left lg:w- xl:w-40">
+                {info.pool_name}
+              </div>
+              <div className="my-auto px-5 text-base  text-left lg:w- xl:w-40">
+                {info.total_fee}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
       <DetailsModal
         onClose={handleOnClose}
         visible={modalVisibility}
