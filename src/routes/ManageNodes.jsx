@@ -1,14 +1,14 @@
-import { useEffect, useState, useContext } from "react";
-import { get_peers, remove_node, get_node } from "../utils";
-import { GlobalContext } from "../App";
-import { BsPlusSquare } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { remove_node, get_node, add_watch_until } from "../utils";
+import { CgSearch } from "react-icons/cg";
 import AddNodeForm from "../components/AddNodeForm";
 
 export default function ManageNodes() {
-  const { nodes } = useContext(GlobalContext);
   const [nodesData, setNodesData] = useState([]);
   const [nodeRemovedFlag, setNodeRemovedFlag] = useState(false);
   const [hideForm, setHideForm] = useState(true);
+  const [watchUntil, setWatchUntil] = useState(new Date().toUTCString());
+  const [watchAddr, setWatchAddr] = useState(null);
 
   const populate_nodes = () => {
     get_node()
@@ -31,6 +31,16 @@ export default function ManageNodes() {
     });
   };
 
+
+  const watch_addr = ()=>{
+    add_watch_until(watchAddr,watchUntil)
+    .then(res => {
+      alert("you will now recieve notification for the address activity");
+      console.log(res,"===");
+    })
+    .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     console.log("fetched");
     populate_nodes();
@@ -49,6 +59,30 @@ export default function ManageNodes() {
         >
           <span className="text-white text-xl font-medium">Add Node</span>
           {/* <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900"/> */}
+        </button>
+      </div>
+      
+      <div className="mx-auto flex justify-center flex-row mb-5">
+        <input
+          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5 text-lg"
+          value={watchAddr}
+          placeholder="bc1qm34lsc65zpw79lxes69zkqmk6ee3ewf0j77s3h"
+          onChange={(e) => setWatchAddr(e.target.value)}
+        />
+
+        <input
+          className="bg-slate-50 h-12 w-60 lg:w-40 rounded mt-10 ml-5  pl-5 text-lg"
+          placeholder="Watch Until"
+          value={watchUntil}
+          onChange={(e) => setWatchUntil(e.target.value)}
+        />
+
+        <button
+          onClick={watch_addr}
+          className="bg-buttons hover:bg-green-700 text-white flex items-center justify-center text-xl ml-5 rounded mt-10 p-2"
+        >
+          <CgSearch className="m-auto" />
+          <p className="ml-2">Watch Addr</p>
         </button>
       </div>
       <div className="flex items-center  justify-center overflow-x-auto sm:rounded-lg mt-10">

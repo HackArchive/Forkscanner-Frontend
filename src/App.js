@@ -56,12 +56,14 @@ function App() {
         <GlobalContext.Provider value={contextData}>
           <Navbar />
           <div className="pt-20 overflow-y-auto h-[100vh]">
-
-            <div className='w-[20vw] h-full fixed bg-transparent bg-red-600 right-0 top-20'>
-              {
-              notification.map(nt => (<Notification notification={nt} notifications={notification} setNotification={setNotification}/>))
-              } 
-            </div>
+            {
+              (notification.length !== 0) &&
+              <div className='w-[20vw] h-full fixed bg-transparent bg-red-600 right-0 top-20'>
+                {
+                notification.map(nt => (<Notification notification={nt} notifications={notification} setNotification={setNotification}/>))
+                } 
+              </div>
+            }
 
             <Routes>
               <Route path='/' element={<Bitcoin/>} />
