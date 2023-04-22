@@ -1,69 +1,37 @@
-## LambdaLogs
+## ForkScanner Frontend
 
-[![LambdaTest_Logo](https://www.lambdatest.com/resources/images/guideline/ltlambdabrand.svg)](https://www.lambdatest.com/)
-<!-- <img src="https://www.lambdatest.com/resources/images/guideline/ltlambdabrand.svg"  width="600" height="300"> -->
+![Forkscanner Logo](https://user-images.githubusercontent.com/68425016/233806615-8af2d5ae-665c-4650-b597-77b7e3868bf4.png)
 
-### About LambdaTest 
-[LambdaTest](https://www.lambdatest.com/) is a continuous quality testing cloud platform that helps developers and testers ship code faster. Over 2 Million users across 130 countries and leading enterprises rely on LambdaTest for their testing needs. LambdaTest platform provides secure, scalable, and insightful test orchestration for customers at different points in their DevOps (CI/CD) lifecycle
+### About Forkscanner 
+[Forkscanner](https://github.com/twilight-project/forkscanner/) is a sophisticated tool designed to actively monitor the Bitcoin blockchain in real-time, providing users with valuable insights into the state of the network. By continuously scanning the blockchain, Forkscanner is able to keep track of various critical aspects of the network's operations, including chain forks, double-spent transactions, replace-by-fee transactions, inflation checks, miner rewards, block templates, fee calculation, and soft forks.
 
-# About
-LambdaLogs is a powerful network log visualization tool designed to help businesses identify potential issues with their websites and endpoints quickly and easily. By scraping site data and storing network logs in a database, LambdaLogs provides an efficient way to perform daily audits and identify failing endpoints before they cause problems.
+With its comprehensive monitoring capabilities, Forkscanner provides users with unparalleled visibility into the inner workings of the Bitcoin network, allowing them to make informed decisions about their transactions and investments. Its robust feature set and real-time monitoring capabilities make it an essential tool for anyone looking to stay ahead of the curve in the fast-paced world of cryptocurrency.
 
-With its intuitive front-end interface, LambdaLogs enables users to easily visualize network logs and quickly identify areas for improvement. Whether you're a small business owner or a large enterprise, LambdaLogs provides the insights and data you need to keep your website running smoothly and efficiently.
+# About This Project
+This project involves the implementation of a frontend for Forkscanner, as part of the MIT Bitcoin Hackathon challenge. The frontend leverages backend RPC calls and socket connections to subscribe to real-time events on the network and obtain relevant information, thereby enhancing the functionality of the backend and simplifying user interaction with the tool. Through this implementation, the frontend extends the capabilities of Forkscanner and makes it easier for users to access and use its features.
 
-So if you're looking for a powerful tool to help you optimize your website and improve your business operations, look no further than LambdaLogs.
-
-## Logs Page
+## Bitcoin Info Bage
 <img alt="LambdaLogs Logs Page" src="https://user-images.githubusercontent.com/68425016/227501453-e64d5d4d-b31a-4724-a24f-5715069b16e9.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
-## Status Code Visualization Page (Line Chart)
+## Blocks ( visual block explorer )
 <img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/227501830-d4dc21f7-4717-40b4-9264-311696e5b55f.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
-## Status Code Visualization Page (Pie Chart)
+## Manage Nodes
 <img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/227502438-f324a918-f10c-4af7-90dc-0a77f63f281e.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 # Development Setup
 
-## Setup virtualenv 
-```sh
+## Setup 
 
-    pip install virtualenv
-    virtualenv venv
-    
-    # Activate For Linux
-    source venv/bin/activate
-
-    # Activate For Windows 
-    ./venv/Scripts/activate
-
-    # install dependencies
-    pip install -r server/requirements.txt
-```
-
-## Setup Elastic-Search using docker 
-```sh
-    docker pull elasticsearch
-    docker run -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.9
-```
-
-## Run Scrapper
-```sh
-    cd server
-    python scrapper/scrapper.py
-```
-
-## Run Backend
-```sh
-    cd server/app
-    uvicorn main:app --reload
-```
+## Backend 
+[setup backend from here](https://github.com/twilight-project/forkscanner/blob/main/README.md)
 
 ## Run Frontend
 ```sh
-    cd frontend 
+    cd Forkscanner-Frontend 
     npm install
     npm start
 ```
@@ -72,13 +40,6 @@ So if you're looking for a powerful tool to help you optimize your website and i
 
 Then go to `http://0.0.0.0:3000/` to see the frontend
 
-Add `http://0.0.0.0:8000/docs` for API Docs.
-
-
 ### Resources
-- Install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- Sample GitHub [Issue](https://github.com/npm/cli/issues/6051)
-- [ElasticSearch](https://www.elastic.co/guide/index.html) documentation
-- [ReactJS](https://reactjs.org/docs/getting-started.html) documentation
-- [Python](https://www.python.org/doc/) documentation
-- [FastAPI](https://fastapi.tiangolo.com/) documentation
+- Installed backend from [Scanner-Walkthrough](https://github.com/twilight-project/forkscanner/tree/scanner-walkthrough)
+- [backend setup tutorial](https://github.com/twilight-project/forkscanner/blob/scanner-walkthrough/WALKTHROUGH.md)
