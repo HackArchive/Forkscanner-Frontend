@@ -38,7 +38,7 @@ function App() {
 
 
   return (
-    <section className='bg-[rgb(40,40,40)]'>
+    <section className='bg-primary'>
       <BrowserRouter>
         <GlobalContext.Provider value={contextData}>
           <Navbar />

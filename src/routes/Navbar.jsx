@@ -5,6 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { FaServer } from "react-icons/fa";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 import { BiCube } from "react-icons/bi";
+import {MdOutlineNotificationsActive} from "react-icons/md"
 
 function Navbar() {
   const activeClass = "flex border-b-2 pb-2 text-emerald-500 font-semibold ";
@@ -12,11 +13,11 @@ function Navbar() {
 
   return (
     <section className="fixed w-full h-full lg:h-auto">
-      <div className="lg:flex flex-col lg:flex-row pt-2 lg:px-5 px-3 bg-[#00564d] text-white hidden ">
+      <div className="lg:flex flex-col lg:flex-row pt-2 lg:px-5 px-3 bg-[#212121] text-white hidden shadow-xl ">
         <div className="flex flex-row">
           <NavLink className="flex flex-row pb-2 mr-auto" to="/bitcoin">
             <img src={logo} alt="btc logo" className="w-10 h-10 p-1 " />
-            <div className="font-semibold text-xl lg:text-2xl my-auto pl-2">
+            <div className="font-semibold text-lg2 lg:text-xl my-auto pl-2">
               ForkScanner
             </div>
           </NavLink>
@@ -31,7 +32,7 @@ function Navbar() {
               to="/bitcoin"
             >
               <div className="flex flex-row items-center  m-auto justify-center">
-                <BsCurrencyBitcoin className="text-2xl mr-2" />
+                <BsCurrencyBitcoin className="text-xl mr-2" />
                 <div className="">Bitcoin</div>
               </div>
             </NavLink>
@@ -43,7 +44,7 @@ function Navbar() {
               to="/blocks"
             >
               <div className="flex flex-row items-center  m-auto justify-center">
-                <BiCube className="text-2xl mr-2" />
+                <BiCube className="text-xl mr-2" />
                 <div className="">Blocks</div>
               </div>
             </NavLink>
@@ -56,7 +57,7 @@ function Navbar() {
               class=""
             >
               <div className="flex flex-row items-center  m-auto justify-center">
-                <FaServer className="text-2xl mr-2" />
+                <FaServer className="text-xl mr-2" />
                 <div className="">Manage Nodes</div>
               </div>
             </NavLink>
@@ -68,8 +69,8 @@ function Navbar() {
               class=""
             >
               <div className="flex flex-row items-center  m-auto justify-center">
-                <FaServer className="text-2xl mr-2" />
-                <div className="">Monitor</div>
+                <MdOutlineNotificationsActive className="text-xl mr-2" />
+                <div className="">Notification</div>
               </div>
             </NavLink>
           </div>
@@ -85,7 +86,7 @@ function Navbar() {
             <FaServer />
           </NavLink>
           <NavLink to="/nodes" className="">
-            <FaServer />
+            <MdOutlineNotificationsActive />
           </NavLink>
         </div>
     </section>

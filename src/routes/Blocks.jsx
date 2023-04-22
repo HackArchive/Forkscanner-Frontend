@@ -64,7 +64,7 @@ function Blocks() {
 
       <div className="mx-auto flex flex-row justify-center mb-5">
         <input
-          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5"
+          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5 text-lg"
           placeholder="Block hash or height"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -73,7 +73,7 @@ function Blocks() {
           <select
             name="node_id"
             onChange={(e) => setSearchType(e.target.value)}
-            className="w-full h-full p-2 rounded-md"
+            className="w-full h-full p-2 rounded-md text-lg"
           >
             <option value="hash">Hash</option>
             <option value="height">Height</option>
@@ -87,9 +87,10 @@ function Blocks() {
         </button>
         <button
           onClick={() => setHideForm(false)}
-          className="text-xl w-12 ml-2 rounded mt-10"
+          className="text-xl ml-2 rounded mt-10 bg-emerald-700"
         >
-          <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" />
+          {/* <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" /> */}
+          <span className="text-white p-2 text-lg font-medium">Add Block</span>
         </button>
       </div>
 
