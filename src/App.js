@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
     if (notificationPermission === true) {
-      Subscriptions(notification, setNotification);
+      Subscriptions(setNotification);
     }
   },[notificationPermission])
 

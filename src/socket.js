@@ -1,5 +1,5 @@
 
-export default function Subscriptions(notifications,setNotification){
+export default function Subscriptions(setNotification){
      
     function* Genrator(){
         let count = 0;
@@ -77,11 +77,11 @@ export default function Subscriptions(notifications,setNotification){
             console.log(`Got forks method: ${JSON.stringify(obj.params)}`);
 
             obj.params.map(fork => {
-                setNotification([{
+                setNotification(prevNotifications => [{
                     id: gen.next(),
                     title: "Got Forks",
                     message: `Recieved a fork at block height ${fork.height} with Block hash: ${fork.block} found by Node ${fork.node}`
-                },...notifications]);
+                },...prevNotifications]);
             })
         } else if (obj.method == "watched_address_checks") {
             console.log(`Got watched address method: ${JSON.stringify(obj.params)}`);
