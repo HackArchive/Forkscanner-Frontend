@@ -140,4 +140,21 @@ export const add_node = async (name,rpc_host,rpc_port,mirror_rpc_port,user,pass,
 }
 
 
+export const submit_block = async (node_id,block)=>{
+    
+  try{
+
+    let resp = rpc_client.call("submit_block",{node_id,block});
+    let data = (await resp).result;
+    return data;
+
+  
+  } catch (err){
+
+    console.log(err)
+    return null;
+
+  }
+}
+
 
