@@ -12,7 +12,7 @@ function Navbar() {
   const inActiveClass = "flex hover:text-[#00897b] text-lg font-normal";
 
   return (
-    <section className="fixed w-full h-full lg:h-auto">
+    <section className="fixed z-20 w-full h-full lg:h-auto">
       <div className="lg:flex flex-col lg:flex-row py-4 motion-safe:animate- lg:px-5 px-3 bg-black text-white hidden shadow-xl ">
         <div className="flex flex-row">
           <NavLink className="flex flex-row pb-2 mr-auto" to="/bitcoin">

@@ -95,7 +95,7 @@ function Blocks() {
       </div>
 
       {/* mobile */}
-      <div className="flex flex-col gap-4 md:hidden">
+      <div className="relative z-10 flex flex-col gap-4 md:hidden">
         {blocks.map((info) => (
           <button
             onClick={() => {
@@ -133,7 +133,7 @@ function Blocks() {
       </div>
 
       {/* desktop */}
-      <div className="md:flex flex-col w-full gap-4 items-center overflow-y-auto hidden">
+      <div className="relative z-10 md:flex flex-col w-full gap-4 items-center overflow-y-auto hidden">
         <div className="flex w-full justify-evenly shadow-xl bg-secondary rounded-xl h-16  text-white  ">
           <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-30 xl:w-40">
             Height

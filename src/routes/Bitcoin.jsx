@@ -23,7 +23,6 @@ function Bitcoin() {
   }
 
   const getChainTip = (node) => {
-
     for (let i = 0; i <= chainTips.length; i++) {
       if (chainTips[i] !== undefined && chainTips[i].node == node) {
         setBlockInfo(chainTips[i]);
@@ -33,32 +32,28 @@ function Bitcoin() {
               setBlockInfo(result[0]);
             }
           })
-          .catch(err => console.log(err))
+          .catch((err) => console.log(err));
       }
     }
-  }
-
-
+  };
 
   useEffect(() => {
     if (nodes.length == 0) {
-      console.log("no nodes in the database")
-    }
-    else {
+      console.log("no nodes in the database");
+    } else {
       setFilterNode(nodes[0]);
     }
-  }, [nodes])
+  }, [nodes]);
 
   useEffect(() => {
     if (filterNode !== undefined) {
       getChainTip(filterNode);
     }
-  }, [filterNode])
-
+  }, [filterNode]);
 
   return (
     <section className="mx-5 lg:mx-60">
-        <div className="mx-auto flex justify-center flex-row mb-5">
+        <div className="relative flex w-full h-min justify-between items-center lg:mt-10">
           <input
             className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5 text-lg"
             placeholder="Block hash or height"
@@ -92,18 +87,27 @@ function Bitcoin() {
       <div className=" shadow-xl bg-secondary rounded-3xl w-full h-fit mt-10 ">
         <div className="flex flex-col text-white p-5 gap-2 divide-y divide-primary break-all">
           <span className="py-1">Height : {blockInfo && blockInfo.height}</span>
-          <span className="py-1">Fees : {blockInfo && blockInfo.total_fee} BTC</span>
-          <span className="py-1">Pool Name : {blockInfo && blockInfo.pool_name}</span>
-          <span className="py-1">First seen by : {blockInfo && blockInfo.first_seen_by}</span>
-          <span className="py-1">Miner Work : {blockInfo && blockInfo.work}</span>
+          <span className="py-1">
+            Fees : {blockInfo && blockInfo.total_fee} BTC
+          </span>
+          <span className="py-1">
+            Pool Name : {blockInfo && blockInfo.pool_name}
+          </span>
+          <span className="py-1">
+            First seen by : {blockInfo && blockInfo.first_seen_by}
+          </span>
+          <span className="py-1">
+            Miner Work : {blockInfo && blockInfo.work}
+          </span>
         </div>
       </div>
-      <div className="flex lg:flex-row flex-col lg:gap-5">
-        <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-        <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-        <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-      </div>
-      <div className="p-10" />
+
+          <div className="relative z-10 flex lg:flex-row flex-col lg:gap-5">
+            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
+            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
+            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
+          </div>
+
     </section>
   );
 }

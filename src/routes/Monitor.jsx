@@ -16,8 +16,8 @@ export default function Monitor() {
 
     return (
 
-        <div className="w-full h-full flex flex-col text-white items-center">
-            <div className="flex flex-col mt-20 ml-10 w-1/2">
+        <div className="relative z-10 w-full h-full flex flex-col text-white items-center">
+            <div className="flex flex-col mt-10 ml-10 w-1/2">
                 <p className="text-5xl font-bold">Browser push notifications</p>
                 <p className="text-xl mt-5">We currently send browser push notifications for invalid blocks, stale candidates and unexpected extra inflation.</p>
                 <p className="text-xl mt-2">Browser push notifications enabled. You can close this page.</p>

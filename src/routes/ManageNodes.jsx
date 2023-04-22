@@ -47,7 +47,7 @@ export default function ManageNodes() {
   }, [nodeRemovedFlag]);
 
   return (
-    <section>
+    <section className="relative z-10">
       <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
         <AddNodeForm setHideForm={setHideForm} />
       </div>
@@ -85,7 +85,7 @@ export default function ManageNodes() {
           <p className="ml-2">Watch Addr</p>
         </button>
       </div>
-      <div className="flex items-center  justify-center overflow-x-auto sm:rounded-lg mt-10">
+      <div className="flex items-center justify-center overflow-x-auto rounded-lg mt-10">
         <table className="w-[70%] text-sm text-left shadow-md text-white dark:text-gray-400 ">
           <thead className=" text-xl uppercase bg-secondary text-gray-400">
             <tr>
