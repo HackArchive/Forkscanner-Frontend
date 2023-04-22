@@ -1,58 +1,57 @@
 import React, { useEffect, useContext, useState } from "react";
-import { CgSearch } from "react-icons/cg"
+import { CgSearch } from "react-icons/cg";
 import { get_block } from "../utils";
 import { GlobalContext } from "../App";
-import { BsPlusSquare } from "react-icons/bs"
+import { BsPlusSquare } from "react-icons/bs";
 import SubmitBlockForm from "../components/SubmitBlockForm";
 
 function Blocks() {
-
   const { blockInfo } = useContext(GlobalContext);
   const [blocks, setBlocks] = useState([]);
   const [search, setSearch] = useState("");
   const [searchType, setSearchType] = useState("hash");
   const [hideForm, setHideForm] = useState(true);
 
-
   const get_latest_blocks = async () => {
     if (search == "") {
       let height = blockInfo.height;
-      let temp_blocks = await Promise.all([0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => get_block(height - i, true).then(res => res[0]).catch(err => console.log(err))));
+      let temp_blocks = await Promise.all(
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) =>
+          get_block(height - i, true)
+            .then((res) => res[0])
+            .catch((err) => console.log(err))
+        )
+      );
       setBlocks(temp_blocks);
-    }
-    else {
-
+    } else {
       let search_by_height = true;
       let tsearch = null;
       if (searchType === "hash") {
         search_by_height = false;
         tsearch = search;
-      }
-      else {
+      } else {
         tsearch = parseInt(search);
         console.log(tsearch, search_by_height);
       }
       get_block(tsearch, search_by_height)
-        .then(res => {
-          console.log(res)
+        .then((res) => {
+          console.log(res);
           if (res === undefined || res === null) {
             setBlocks([]);
-          }
-          else {
-            setBlocks([res[0]])
+          } else {
+            setBlocks([res[0]]);
           }
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
     }
-  }
+  };
 
   useEffect(() => {
     get_latest_blocks();
-
-  }, [])
+  }, []);
 
   return (
-    <>
+    <section className="mx-5 lg:mx-60 mb-10">
       <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
         <div className="flex w-full h-full bg-transparent justify-center items-center">
           <div className="flex w-[50%] h-[80%] bg-gray-800 items-center justify-center rounded-md shadow-md">
@@ -60,53 +59,113 @@ function Blocks() {
           </div>
         </div>
       </div>
-      <section className="mx-5 lg:mx-60 mb-10">
 
-        <div className="mx-auto flex flex-row justify-center mb-5">
-          <input
-            className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5"
-            placeholder="Block hash or height"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-          <div className="w-30 ml-2 rounded mt-10">
-            <select name="node_id" onChange={e => setSearchType(e.target.value)} className="w-full h-full p-2 rounded-md">
-              <option value="hash">Hash</option>
-              <option value="height">Height</option>
-            </select>
-          </div>
-          <button onClick={get_latest_blocks} className="bg-secondary text-white text-xl w-12 ml-2 rounded mt-10 ">
-            <CgSearch className="m-auto" />
-          </button>
-          <button onClick={()=>setHideForm(false)} className="text-xl w-12 ml-2 rounded mt-10">
-            <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" />
-          </button>
+      <div className="mx-auto flex flex-row justify-center mb-5">
+        <input
+          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5"
+          placeholder="Block hash or height"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="w-30 ml-2 rounded mt-10">
+          <select
+            name="node_id"
+            onChange={(e) => setSearchType(e.target.value)}
+            className="w-full h-full p-2 rounded-md"
+          >
+            <option value="hash">Hash</option>
+            <option value="height">Height</option>
+          </select>
         </div>
-        <div className="flex flex-col gap-4 items-center overflow-y-auto">
-          <div className="flex shadow-xl bg-secondary rounded-xl h-16  text-white  ">
-            <span className="my-auto px-5 text-xl text-left lg:w-40">Height</span>
-            <span className="my-auto px-5 text-xl text-left lg:w-[32rem]">Work</span>
-            <span className="my-auto px-5 text-xl text-left lg:w-44">Seen By</span>
-            <span className="my-auto px-5 text-xl text-left lg:w-40">Pool Name</span>
-            <span className="my-auto px-5 text-xl text-left lg:w-40">Fees</span>
-          </div>
+        <button
+          onClick={get_latest_blocks}
+          className="bg-secondary text-white text-xl w-12 ml-2 rounded mt-10 "
+        >
+          <CgSearch className="m-auto" />
+        </button>
+        <button
+          onClick={() => setHideForm(false)}
+          className="text-xl w-12 ml-2 rounded mt-10"
+        >
+          <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" />
+        </button>
+      </div>
 
-          <div className="flex flex-col gap-4 items-center overflow-y-scroll h-[60vh]">
-            <div className="flex flex-col gap-4 items-center">
-              {blocks.map((info) => (
-                <div id={info.height} className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white h-[80px]">
-                  <div className="my-auto px-5 text-base  text-left lg:w-40">{info.height}</div>
-                  <div className="my-auto px-5 text-base  text-left lg:w-[32rem]">{parseInt(info.work, 16)}</div>
-                  <div className="my-auto px-5 text-base  text-left lg:w-44">{info.first_seen_by}</div>
-                  <div className="my-auto px-5 text-base  text-left lg:w-40">{info.pool_name}</div>
-                  <div className="my-auto px-5 text-base  text-left lg:w-40">{info.total_fee}</div>
+      {window.innerWidth < 1000 && (
+        <div className="flex flex-col gap-4">
+          {blocks.map((info) => (
+            <button onClick={() => setModalVisibility(true)}>
+              <div id={info.height}  className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2">
+                <div className="flex flex-row ">
+                  <div className="text-gray-400 font-semibold">Height</div>
+                  <span className="ml-auto">{info.height}</span>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="flex flex-row ">
+                  <div className="text-gray-400 font-semibold">Work</div>
+                  <span className="ml-auto"> {parseInt(info.work, 16)}</span>
+                </div>
+                <div className="flex flex-row ">
+                  <div className="text-gray-400 font-semibold">Seen By</div>
+                  <span className="ml-auto"> {info.first_seen_by}</span>
+                </div>
+                <div className="flex flex-row justify-stretch">
+                  <span className="text-gray-400 font-semibold">Pool Name</span>
+                  <span className="ml-auto"> {info.pool_name}</span>
+                </div>
+                <div className="flex flex-row ">
+                  <div className="text-gray-400 font-semibold">Fees</div>
+                  <span className="ml-auto"> {info.total_fee}</span>
+                </div>
+              </div>
+            </button>
+          ))}
         </div>
-      </section>
-    </>
+      )}
+
+      {window.innerWidth >= 1000 && (
+        <div className="flex flex-col gap-4 items-center overflow-y-auto ">
+          <div className="flex shadow-xl bg-secondary rounded-xl h-16  text-white  ">
+            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
+              Height
+            </span>
+            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-[32rem]">
+            Work
+            </span>
+            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-44">
+            Seen By
+            </span>
+            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
+            Pool Name
+            </span>
+            <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
+            Fees
+            </span>
+          </div>
+          {blocks.map((info) => (
+            <button onClick={() => setModalVisibility(true)}>
+              <div id={info.height} className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white ">
+                <div className="my-auto px-5 text-base  text-left lg:w-40">
+                {info.height}
+                </div>
+                <div className="my-auto px-5 text-base  text-left lg:w-[32rem]">
+                {parseInt(info.work, 16)}
+                </div>
+                <div className="my-auto px-5 text-base  text-left lg:w-44">
+                {info.first_seen_by}
+                </div>
+                <div className="my-auto px-5 text-base  text-left lg:w-40">
+                {info.pool_name}
+                </div>
+                <div className="my-auto px-5 text-base  text-left lg:w-40">
+                {info.total_fee}
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
+      <DetailsModal onClose={handleOnClose} visible={modalVisibility} />
+    </section>
   );
 }
 
