@@ -36,8 +36,7 @@ Then go to `http://0.0.0.0:3000/` to see the frontend
 <br /><br />
 
 ## Blocks ( visual block explorer )
-<img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807301-5152fe5c-2e40-4a03-ab5d-d48cbb097a2f.png
-"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807301-5152fe5c-2e40-4a03-ab5d-d48cbb097a2f.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Add Block/Submit Block
