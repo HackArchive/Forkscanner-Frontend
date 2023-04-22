@@ -51,7 +51,7 @@ export default function SubmitBlockForm(props) {
   };
 
   return (
-    <div className="flex w-full h-full bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center">
+    <div className="relative z-30 flex w-full h-full bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center">
       <div className="flex w-fit h-fit bg-secondary items-center justify-center rounded-xl shadow-md">
         <div className="flex items-center justify-center p-12">
           <div className="mx-auto w-full max-w-[550px] flex">

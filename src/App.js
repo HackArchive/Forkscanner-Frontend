@@ -66,7 +66,7 @@ function App() {
           <div className="pt-20 overflow-y-auto h-[100vh]">
             {
               (notification.length !== 0) &&
-              <div className='w-[20vw] h-full fixed bg-transparent bg-red-600 right-0 top-20'>
+              <div className='w-[20vw] h-full fixed z-40 bg-transparent bg-red-600 right-0 top-20'>
                 {
                 notification.map(nt => (<Notification notification={nt} notifications={notification} setNotification={setNotification}/>))
                 } 

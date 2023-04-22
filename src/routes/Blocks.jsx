@@ -57,8 +57,8 @@ function Blocks() {
   const handleOnClose = () => setModalVisibility(false);
 
   return (
-    <section className="mx-5 lg:mx-40 xl:mx-60 mb-10">
-      <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
+    <section className="z-20 mx-5 lg:mx-40 xl:mx-60 mb-10">
+      <div className="fixed z-30 w-full h-full top-0 left-0" hidden={hideForm}>
         <SubmitBlockForm setHideForm={setHideForm} />
       </div>
 

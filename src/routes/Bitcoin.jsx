@@ -52,10 +52,10 @@ function Bitcoin() {
   }, [filterNode]);
 
   return (
-    <section className="mx-5 lg:mx-60">
+    <section className="relative z-10 mx-5 lg:mx-60">
         <div className="relative flex w-full h-min justify-between items-center lg:mt-10">
           <input
-            className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5 text-lg"
+            className="bg-slate-50 h-12 w-60 lg:w-96 rounded-xl mt-10  pl-5 text-lg"
             placeholder="Block hash or height"
             value={txActiveSearch}
             onChange={(e) => setTxActiveSearch(e.target.value)}
@@ -63,7 +63,7 @@ function Bitcoin() {
 
           <button
             onClick={searchTxActive}
-            className="bg-buttons text-white flex items-center justify-center text-xl ml-2 rounded mt-10 p-2"
+            className="bg-buttons text-white flex items-center justify-center text-xl ml-2 rounded-lg mt-10 p-2"
           >
             <CgSearch className="m-auto" />
             <p className="ml-2">Active TX</p>
@@ -71,13 +71,13 @@ function Bitcoin() {
         </div>
 
       <div className="flex w-full h-min justify-between items-center lg:mt-10">
-        <div className="flex shadow-xl bg-secondary z-20 rounded-3xl w-[85%] h-fit p-1 lg:py-3 py-2  text-white  items-center break-all">
+        <div className="flex shadow-xl bg-secondary z-20 rounded-xl w-[85%] h-fit p-1 lg:py-3 py-2  text-white  items-center break-all">
           <span className="my-auto px-5 text-xl">
             <strong>ChainTip:</strong> {blockInfo && blockInfo.hash}
           </span>
         </div>
         <div className="w-[100px] h-[50px] z-20">
-          <select name="node_id" onChange={(event) => { setFilterNode(event.target.value) }} className="w-full h-full p-2 rounded-md">
+          <select name="node_id" onChange={(event) => { setFilterNode(event.target.value) }} className="w-full h-full p-2 rounded-lg">
             {
               nodes.map(node_id => <option value={`${node_id}`}>Node {node_id}</option>)
             }
@@ -102,7 +102,7 @@ function Bitcoin() {
         </div>
       </div>
 
-          <div className="relative z-10 flex lg:flex-row flex-col lg:gap-5">
+          <div className="relative z-10 flex lg:flex-row flex-col lg:gap-5 mb-10">
             <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
             <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
             <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>

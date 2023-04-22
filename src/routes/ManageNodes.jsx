@@ -71,7 +71,7 @@ export default function ManageNodes() {
         />
 
         <input
-          className="bg-slate-50 h-12 w-60 lg:w-40 rounded mt-10 ml-5  pl-5 text-lg"
+          className="bg-slate-50 h-12 w-96 lg:w-40 rounded mt-10 ml-5  p-2 text-lg"
           placeholder="Watch Until"
           value={watchUntil}
           onChange={(e) => setWatchUntil(e.target.value)}
