@@ -1,13 +1,13 @@
 import React from 'react'
 import { BiCube } from 'react-icons/bi'
-function DetailsModal({ onClose, visible }) {
+function DetailsModal({ onClose, visible, props }) {
     if (!visible) return null;
 
     const handleOnClose = (e) => {
         if (e.target.id === "container")
             onClose()
     }
-
+    const info = props
     return (
         <div id="container" onClick={handleOnClose} className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center'>
             <div className=" shadow-2xl bg-secondary text-white rounded-3xl w-full h-fit mt-10 mx-80 p-5">
@@ -17,13 +17,13 @@ function DetailsModal({ onClose, visible }) {
                 </div>
 
                 <div className="flex flex-col  p-5 gap-2 divide-y divide-primary ">
-                    <span className="py-1">Hash : </span>
-                    <span className="py-1">Height :  BTC</span>
-                    <span className="py-1">Parent Hash : </span>
-                    <span className="py-1">Pool Name : </span>
-                    <span className="py-1">Total Fee : </span>
-                    <span className="py-1">txids : </span>
-                    <span className="py-1">work : </span>
+                    <span className="py-1">Hash : {info.hash}</span>
+                    <span className="py-1">Height : {info.height}</span>
+                    <span className="py-1">Parent Hash : {info.parent_hash}</span>
+                    <span className="py-1">Pool Name : {info.pool_name}</span>
+                    <span className="py-1">Total Fee : {info.total_fee}</span>
+                    <span className="py-1">txids : {info.hash}</span>
+                    <span className="py-1">work : {info.work}</span>
                 </div>
             </div>
         </div>

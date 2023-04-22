@@ -12,6 +12,7 @@ function Blocks() {
   const [search, setSearch] = useState("");
   const [searchType, setSearchType] = useState("hash");
   const [hideForm, setHideForm] = useState(true);
+  const [modalInfo, setModalInfo] = useState()
 
   const get_latest_blocks = async () => {
     if (search == "") {
@@ -147,7 +148,7 @@ function Blocks() {
             </span>
           </div>
           {blocks.map((info) => (
-            <button onClick={() => setModalVisibility(true)}>
+            <button onClick={() => {setModalVisibility(true); setModalInfo(info)}}>
               <div id={info.height} className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white ">
                 <div className="my-auto px-5 text-base  text-left lg:w-40">
                 {info.height}
@@ -169,7 +170,7 @@ function Blocks() {
           ))}
         </div>
       )}
-      <DetailsModal onClose={handleOnClose} visible={modalVisibility} />
+      <DetailsModal onClose={handleOnClose} visible={modalVisibility} props={modalInfo}/>
     </section>
   );
 }
