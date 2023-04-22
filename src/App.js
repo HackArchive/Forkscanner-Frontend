@@ -47,7 +47,11 @@ function App() {
     if (notificationPermission === true) {
       Subscriptions(notification, setNotification);
     }
-  }, [notificationPermission]);
+  },[notificationPermission])
+
+  useEffect(() => {
+    document.title = 'ForkScanner';
+  }, []);
 
   return (
     <section className="bg-primary">
