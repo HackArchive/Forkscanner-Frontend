@@ -81,13 +81,13 @@ function Blocks() {
         </div>
         <button
           onClick={get_latest_blocks}
-          className="bg-secondary text-white text-xl w-12 ml-2 rounded mt-10 "
+          className="bg-buttons text-white text-xl w-12 ml-2 rounded mt-10 "
         >
           <CgSearch className="m-auto" />
         </button>
         <button
           onClick={() => setHideForm(false)}
-          className="text-xl ml-2 rounded mt-10 bg-emerald-700"
+          className="text-xl ml-2 rounded mt-10 bg-buttons"
         >
           {/* <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" /> */}
           <span className="text-white p-2 text-lg font-medium">Add Block</span>

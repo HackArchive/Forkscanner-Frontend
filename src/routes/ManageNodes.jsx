@@ -44,7 +44,7 @@ export default function ManageNodes() {
       <div className="flex w-full h-full items-center justify-center mt-10">
         <p className="text-4xl text-white font-bold">NODES</p>
         <button
-          className="ml-5 h-full p-2 rounded bg-emerald-700"
+          className="ml-5 h-full p-2 rounded bg-buttons"
           onClick={() => setHideForm(false)}
         >
           <span className="text-white text-xl font-medium">Add Node</span>

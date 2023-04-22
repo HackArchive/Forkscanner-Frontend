@@ -13,7 +13,7 @@ export default function Subscriptions(notifications,setNotification){
     const gen = Genrator();
     var subscriptions = {};
 
-    const ws = new WebSocket('ws://localhost:8340');
+    const ws = new WebSocket('ws://192.168.1.10:8340');
     ws.addEventListener('open', () => {
     console.log('Sending request');
 

@@ -8,12 +8,12 @@ import { BiCube } from "react-icons/bi";
 import {MdOutlineNotificationsActive} from "react-icons/md"
 
 function Navbar() {
-  const activeClass = "flex border-b-2 pb-2 text-emerald-500 font-semibold ";
+  const activeClass = "flex border-b-2 border-emerald-500 pb-2 text-emerald-500 font-semibold ";
   const inActiveClass = "flex hover:text-[#00897b] text-lg font-normal";
 
   return (
     <section className="fixed w-full h-full lg:h-auto">
-      <div className="lg:flex flex-col lg:flex-row pt-2 lg:px-5 px-3 bg-[#212121] text-white hidden shadow-xl ">
+      <div className="lg:flex flex-col lg:flex-row py-4 motion-safe:animate- lg:px-5 px-3 bg-black text-white hidden shadow-xl ">
         <div className="flex flex-row">
           <NavLink className="flex flex-row pb-2 mr-auto" to="/bitcoin">
             <img src={logo} alt="btc logo" className="w-10 h-10 p-1 " />
