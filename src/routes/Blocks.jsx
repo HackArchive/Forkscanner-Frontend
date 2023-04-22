@@ -12,7 +12,7 @@ function Blocks() {
   const [search, setSearch] = useState("");
   const [searchType, setSearchType] = useState("hash");
   const [hideForm, setHideForm] = useState(true);
-  const [modalInfo, setModalInfo] = useState()
+  const [modalInfo, setModalInfo] = useState();
 
   const get_latest_blocks = async () => {
     if (search == "") {
@@ -52,18 +52,14 @@ function Blocks() {
     get_latest_blocks();
   }, []);
 
-  const [modalVisibility, setModalVisibility] = useState(false)
+  const [modalVisibility, setModalVisibility] = useState(false);
 
-  const handleOnClose = () => setModalVisibility(false)
-  
+  const handleOnClose = () => setModalVisibility(false);
+
   return (
     <section className="mx-5 lg:mx-60 mb-10">
       <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
-        <div className="flex w-full h-full bg-transparent justify-center items-center">
-          <div className="flex w-[50%] h-[80%] bg-gray-800 items-center justify-center rounded-md shadow-md">
-            <SubmitBlockForm setHideForm={setHideForm} />
-          </div>
-        </div>
+        <SubmitBlockForm setHideForm={setHideForm} />
       </div>
 
       <div className="mx-auto flex flex-row justify-center mb-5">
@@ -100,8 +96,16 @@ function Blocks() {
       {window.innerWidth < 1000 && (
         <div className="flex flex-col gap-4">
           {blocks.map((info) => (
-            <button onClick={() => {setModalVisibility(true); setModalInfo(info)}}>
-              <div id={info.height}  className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2">
+            <button
+              onClick={() => {
+                setModalVisibility(true);
+                setModalInfo(info);
+              }}
+            >
+              <div
+                id={info.height}
+                className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2"
+              >
                 <div className="flex flex-row ">
                   <div className="text-gray-400 font-semibold">Height</div>
                   <span className="ml-auto">{info.height}</span>
@@ -135,42 +139,54 @@ function Blocks() {
               Height
             </span>
             <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-[32rem]">
-            Work
+              Work
             </span>
             <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-44">
-            Seen By
+              Seen By
             </span>
             <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
-            Pool Name
+              Pool Name
             </span>
             <span className="my-auto px-5 text-base font-semibold text-gray-400 text-left lg:w-40">
-            Fees
+              Fees
             </span>
           </div>
           {blocks.map((info) => (
-            <button onClick={() => {setModalVisibility(true); setModalInfo(info)}}>
-              <div id={info.height} className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white ">
+            <button
+              onClick={() => {
+                setModalVisibility(true);
+                setModalInfo(info);
+              }}
+            >
+              <div
+                id={info.height}
+                className="flex shadow-xl bg-secondary hover:bg-tertiary rounded-xl h-16  text-white "
+              >
                 <div className="my-auto px-5 text-base  text-left lg:w-40">
-                {info.height}
+                  {info.height}
                 </div>
                 <div className="my-auto px-5 text-base  text-left lg:w-[32rem]">
-                {parseInt(info.work, 16)}
+                  {parseInt(info.work, 16)}
                 </div>
                 <div className="my-auto px-5 text-base  text-left lg:w-44">
-                {info.first_seen_by}
+                  {info.first_seen_by}
                 </div>
                 <div className="my-auto px-5 text-base  text-left lg:w-40">
-                {info.pool_name}
+                  {info.pool_name}
                 </div>
                 <div className="my-auto px-5 text-base  text-left lg:w-40">
-                {info.total_fee}
+                  {info.total_fee}
                 </div>
               </div>
             </button>
           ))}
         </div>
       )}
-      <DetailsModal onClose={handleOnClose} visible={modalVisibility} props={modalInfo}/>
+      <DetailsModal
+        onClose={handleOnClose}
+        visible={modalVisibility}
+        props={modalInfo}
+      />
     </section>
   );
 }

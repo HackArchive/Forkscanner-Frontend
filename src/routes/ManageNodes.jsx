@@ -36,23 +36,19 @@ export default function ManageNodes() {
     }, [nodeRemovedFlag])
 
     return (
-        <>
+        <section>
             <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
-                <div className="flex w-full h-full bg-transparent justify-center items-center">
-                    <div className="flex w-[50%] h-[80%] bg-gray-800 items-center justify-center rounded-md shadow-md">
                         <AddNodeForm setHideForm={setHideForm}/> 
-                    </div>
-                </div>
             </div>
-            <div className="flex w-full justify-center mt-10">
+            <div className="flex w-full  justify-center mt-10">
                 <p className="text-4xl text-white font-bold">MY NODES</p>
                 <button className="w-max h-max ml-10" onClick={()=>setHideForm(false)}>
                     <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900"/>
                 </button>
             </div>
-            <div className="flex items-center justify-center overflow-x-auto shadow-md sm:rounded-lg mt-10">
-                <table className="w-[70%] text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xl text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div className="flex items-center  justify-center overflow-x-auto sm:rounded-lg mt-10">
+                <table className="w-[70%] text-sm text-left shadow-md text-white dark:text-gray-400 ">
+                    <thead className=" text-xl uppercase bg-secondary text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Node ID
@@ -77,8 +73,8 @@ export default function ManageNodes() {
 
                             nodesData.map(data => {
                                 return (
-                                    <tr key={data.id} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700 text-[1rem] ">
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <tr key={data.id} className=" border-b bg-tertiary border-gray-700 text-[1rem] ">
+                                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-white">
                                             {data.id}
                                         </th>
                                         <td className="px-6 py-4">
@@ -102,6 +98,6 @@ export default function ManageNodes() {
                     </tbody>
                 </table>
             </div>
-        </>
+        </section>
     );
 }

@@ -23,82 +23,83 @@ const json_placeholder = `{
     "txids_added": null,
     "txids_omitted": null,
     "work": "00000000000000000000000000000000000000002ca1bca6e028e261a6019f07"
-  }`
+  }`;
 
 export default function SubmitBlockForm(props) {
+  const { nodes } = useContext(GlobalContext);
+  const [nodeId, setNodeId] = useState(null);
+  const [blockJson, setBlockJson] = useState("");
 
-    const { nodes } = useContext(GlobalContext);
-    const [nodeId, setNodeId] = useState(null);
-    const [blockJson, setBlockJson] = useState("");
-
-
-    const submit_block_call = ()=>{
-
-        if (JSON.stringify(blockJson))
-        try{
-            let bjson = JSON.stringify(blockJson)
-            submit_block(
-                nodeId,
-                bjson
-            ).then(result=>{
-                console.log(result);
-                props.setHideForm(true);
-                alert("Block submitted successfully");
-            }).catch(err =>{
-                console.log(err);
-                alert("Block submission failed, Invalid block json");
-            })
-        }
-        catch (err){
+  const submit_block_call = () => {
+    if (JSON.stringify(blockJson))
+      try {
+        let bjson = JSON.stringify(blockJson);
+        submit_block(nodeId, bjson)
+          .then((result) => {
+            console.log(result);
+            props.setHideForm(true);
+            alert("Block submitted successfully");
+          })
+          .catch((err) => {
             console.log(err);
-            alert("Invalid Block JSON");
-        }
+            alert("Block submission failed, Invalid block json");
+          });
+      } catch (err) {
+        console.log(err);
+        alert("Invalid Block JSON");
+      }
+  };
 
-    }
-
-    return (
+  return (
+    <div className="flex w-full h-full bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center">
+      <div className="flex w-fit h-fit bg-secondary items-center justify-center rounded-xl shadow-md">
         <div className="flex items-center justify-center p-12">
-
-            <div className="mx-auto w-full max-w-[550px] flex">
-                <div >
-                    <div className="-mx-3 flex flex-wrap">
-                        <div className="w-full px-3 sm:w-1/2">
-                            <div className="w-[100px] h-[50px]">
-                                <select name="node_id" onChange={e=>setNodeId(parseInt(e.target.value))} className="w-full h-full p-2 rounded-md">
-                                    {
-                                        nodes.map(node_id => <option value={`${node_id}`}>Node {node_id}</option>)
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="my-5">
-                        <textarea
-                            placeholder={json_placeholder}
-                            rows={10}
-                            cols={100}
-                            value={blockJson}
-                            onChange={e=>setBlockJson(e.target.value)}
-                            className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md overflow-y-scroll"
-                        />
-                    </div>
-
-                    <div>
-                        <button
-                            className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            onClick={submit_block_call}
-                        >
-                            Submit
-                        </button>
-                        <button
-                            className="hover:shadow-form ml-5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            onClick={() => props.setHideForm(true)}
-                        >
-                            Close
-                        </button>
-                    </div>
+          <div className="mx-auto w-full max-w-[550px] flex">
+            <div>
+              <div className="-mx-3 flex flex-wrap">
+                <div className="w-full px-3 sm:w-1/2">
+                  <div className="w-[100px] h-[50px]">
+                    <select
+                      name="node_id"
+                      onChange={(e) => setNodeId(parseInt(e.target.value))}
+                      className="w-full h-full p-2 rounded-md"
+                    >
+                      {nodes.map((node_id) => (
+                        <option value={`${node_id}`}>Node {node_id}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
+              </div>
+              <div className="my-5">
+                <textarea
+                  placeholder={json_placeholder}
+                  rows={10}
+                  cols={100}
+                  value={blockJson}
+                  onChange={(e) => setBlockJson(e.target.value)}
+                  className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md overflow-y-scroll"
+                />
+              </div>
+
+              <div>
+                <button
+                  className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                  onClick={submit_block_call}
+                >
+                  Submit
+                </button>
+                <button
+                  className="hover:shadow-form ml-5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                  onClick={() => props.setHideForm(true)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
