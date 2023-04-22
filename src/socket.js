@@ -80,7 +80,7 @@ export default function Subscriptions(notifications,setNotification){
                 setNotification([{
                     id: gen.next(),
                     title: "Got Forks",
-                    message: `Recieved a fork at block height ${gen.next()} ${fork.height} with Block hash: ${fork.block} found by Node ${fork.node}`
+                    message: `Recieved a fork at block height ${fork.height} with Block hash: ${fork.block} found by Node ${fork.node}`
                 },...notifications]);
             })
         } else if (obj.method == "watched_address_checks") {

@@ -7,7 +7,7 @@ export default function ManageNodes() {
   const [nodesData, setNodesData] = useState([]);
   const [nodeRemovedFlag, setNodeRemovedFlag] = useState(false);
   const [hideForm, setHideForm] = useState(true);
-  const [watchUntil, setWatchUntil] = useState(new Date().toUTCString());
+  const [watchUntil, setWatchUntil] = useState("2027-01-01T00:00:00Z");
   const [watchAddr, setWatchAddr] = useState(null);
 
   const populate_nodes = () => {
