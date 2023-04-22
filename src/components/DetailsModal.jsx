@@ -10,13 +10,13 @@ function DetailsModal({ onClose, visible, props }) {
     const info = props
     return (
         <div id="container" onClick={handleOnClose} className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center'>
-            <div className=" shadow-2xl bg-secondary text-white rounded-3xl w-full h-fit mt-10 mx-80 p-5">
+            <div className="shadow-2xl bg-secondary text-white rounded-3xl w-fit h-fit mx-5 lg:mt-10 lg:mx-80 p-5">
                 <div className="flex flex-row text-xl">
                     <BiCube/>
-                    <span className='ml-2'>BLOCK</span>
+                    <span className='ml-2'>BLOCK {info.height}</span>
                 </div>
 
-                <div className="flex flex-col  p-5 gap-2 divide-y divide-primary ">
+                <div className="flex break-all flex-col p-1 lg:p-5 gap-4 divide-primary">
                     <span className="py-1">Hash : {info.hash}</span>
                     <span className="py-1">Height : {info.height}</span>
                     <span className="py-1">Parent Hash : {info.parent_hash}</span>

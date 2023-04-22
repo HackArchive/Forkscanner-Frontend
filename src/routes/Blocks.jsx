@@ -100,7 +100,7 @@ function Blocks() {
       {window.innerWidth < 1000 && (
         <div className="flex flex-col gap-4">
           {blocks.map((info) => (
-            <button onClick={() => setModalVisibility(true)}>
+            <button onClick={() => {setModalVisibility(true); setModalInfo(info)}}>
               <div id={info.height}  className="flex flex-col shadow-xl bg-secondary hover:bg-tertiary rounded-xl text-white p-5 text-sm gap-2">
                 <div className="flex flex-row ">
                   <div className="text-gray-400 font-semibold">Height</div>

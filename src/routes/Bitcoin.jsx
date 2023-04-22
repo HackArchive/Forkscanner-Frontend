@@ -44,7 +44,7 @@ function Bitcoin() {
   return (
     <section className="mx-5 lg:mx-60">
       <div className="flex w-full h-min justify-between items-center mt-10">
-        <div className="flex shadow-xl bg-secondary rounded-3xl w-[85%] h-16  text-white  items-center">
+        <div className="flex shadow-xl bg-secondary rounded-3xl w-[85%] h-fit p-1  text-white  items-center break-all">
           <span className="my-auto px-5 text-xl">
             <strong>ChainTip:</strong> {blockInfo && blockInfo.hash}
           </span>
@@ -59,7 +59,7 @@ function Bitcoin() {
         </div>
       </div>
       <div className=" shadow-xl bg-secondary rounded-3xl w-full h-fit mt-10 ">
-        <div className="flex flex-col text-white p-5 gap-2 divide-y divide-primary">
+        <div className="flex flex-col text-white p-5 gap-2 divide-y divide-primary break-all">
           <span className="py-1">Height : {blockInfo && blockInfo.height}</span>
           <span className="py-1">Fees : {blockInfo && blockInfo.total_fee} BTC</span>
           <span className="py-1">Pool Name : {blockInfo && blockInfo.pool_name}</span>
