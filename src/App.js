@@ -13,12 +13,15 @@ function App() {
 
   const [nodes,setNodes] = useState([]);
   const [chainTips,setChainTips] = useState([]);
+  const [blockInfo, setBlockInfo] = useState({ hash: null });
 
   const contextData = {
     nodes,
     chainTips,
+    blockInfo,
     setNodes,
-    setChainTips
+    setChainTips,
+    setBlockInfo
   }
 
   const populateNodeData = async ()=>{

@@ -4,22 +4,18 @@ import { get_block } from "../utils";
 
 function Bitcoin() {
 
-  const { nodes, chainTips } = useContext(GlobalContext);
+  const { nodes,blockInfo, chainTips,setBlockInfo } = useContext(GlobalContext);
   const [filterNode, setFilterNode] = useState(null);
-  const [blockInfo, setBlockInfo] = useState({ hash: null });
 
   const getChainTip = (node) => {
-    console.log(node);
 
     for (let i = 0; i <= chainTips.length; i++) {
       if (chainTips[i] !== undefined && chainTips[i].node == node) {
-        console.log(node);
-        setBlockInfo(chainTips[i]);
-        get_block(chainTips[i].block)
+          setBlockInfo(chainTips[i]);
+          get_block(chainTips[i].block)
           .then(result => {
             if (result.length !== 0) {
               setBlockInfo(result[0]);
-              console.log(result)
             }
           })
           .catch(err => console.log(err))

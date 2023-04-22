@@ -19,11 +19,17 @@ export const get_nodes = async ()=>{
 }
 
 
-export const get_block = async (block_hash)=>{
+export const get_block = async (block,height=false)=>{
     
     try{
-
-      let resp = rpc_client.call("get_block", { hash: block_hash });
+      let params = {}
+      if (height){
+        params = {height: block}
+      }
+      else{
+        params = {hash: block}
+      }
+      let resp = rpc_client.call("get_block", params);
       let data = (await resp).result;
       return data;
 
