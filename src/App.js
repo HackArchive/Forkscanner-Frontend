@@ -5,6 +5,7 @@ import Bitcoin from './routes/Bitcoin'
 import Lightning from './routes/Lightning'
 import Navbar from './routes/Navbar'
 import ManageNodes from './routes/ManageNodes'
+import Blocks from './routes/Blocks'
 
 export const GlobalContext = createContext({});
 
@@ -38,11 +39,12 @@ function App() {
       <BrowserRouter>
         <GlobalContext.Provider value={contextData}>
           <Navbar />
-          <div className="pt-20 mx-5 lg:mx-72 overflow-y-auto h-[100vh]">
+          <div className="pt-20 overflow-y-auto h-[100vh]">
             <Routes>
               <Route path='/' element={<Bitcoin/>} />
               <Route path='/bitcoin' element={<Bitcoin/>} />
               <Route path='/lightning' element={<Lightning/>} />
+              <Route path='/blocks' element={<Blocks/>}/>'
               <Route path='/nodes' element={<ManageNodes/>} />
             </Routes>
           </div>
