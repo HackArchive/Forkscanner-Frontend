@@ -71,12 +71,12 @@ function Bitcoin() {
         </div>
 
       <div className="flex w-full h-min justify-between items-center lg:mt-10">
-        <div className="flex shadow-xl bg-secondary rounded-3xl w-[85%] h-fit p-1 lg:py-3 py-2  text-white  items-center break-all">
+        <div className="flex shadow-xl bg-secondary z-20 rounded-3xl w-[85%] h-fit p-1 lg:py-3 py-2  text-white  items-center break-all">
           <span className="my-auto px-5 text-xl">
             <strong>ChainTip:</strong> {blockInfo && blockInfo.hash}
           </span>
         </div>
-        <div className="w-[100px] h-[50px]">
+        <div className="w-[100px] h-[50px] z-20">
           <select name="node_id" onChange={(event) => { setFilterNode(event.target.value) }} className="w-full h-full p-2 rounded-md">
             {
               nodes.map(node_id => <option value={`${node_id}`}>Node {node_id}</option>)

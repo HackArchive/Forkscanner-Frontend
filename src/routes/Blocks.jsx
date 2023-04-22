@@ -64,12 +64,12 @@ function Blocks() {
 
       <div className="mx-auto flex flex-row justify-center mb-5">
         <input
-          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10  pl-5 text-lg"
+          className="bg-slate-50 h-12 w-60 lg:w-96 rounded mt-10 z-20 pl-5 text-lg"
           placeholder="Block hash or height"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="w-30 ml-2 rounded mt-10">
+        <div className="w-30 ml-2 rounded mt-10 z-20">
           <select
             name="node_id"
             onChange={(e) => setSearchType(e.target.value)}
@@ -81,13 +81,13 @@ function Blocks() {
         </div>
         <button
           onClick={get_latest_blocks}
-          className="bg-buttons text-white text-xl w-12 ml-2 rounded mt-10 "
+          className="bg-buttons text-white text-xl w-12 ml-2 rounded mt-10 z-20"
         >
           <CgSearch className="m-auto" />
         </button>
         <button
           onClick={() => setHideForm(false)}
-          className="text-xl ml-2 rounded mt-10 bg-buttons"
+          className="text-xl ml-2 rounded mt-10 bg-buttons z-20"
         >
           {/* <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900" /> */}
           <span className="text-white p-2 text-lg font-medium">Add Block</span>
