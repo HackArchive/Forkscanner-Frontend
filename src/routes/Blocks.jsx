@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { CgSearch } from "react-icons/cg";
+import DetailsModal from "../components/DetailsModal";
 import { get_block } from "../utils";
 import { GlobalContext } from "../App";
 import { BsPlusSquare } from "react-icons/bs";
@@ -50,6 +51,10 @@ function Blocks() {
     get_latest_blocks();
   }, []);
 
+  const [modalVisibility, setModalVisibility] = useState(false)
+
+  const handleOnClose = () => setModalVisibility(false)
+  
   return (
     <section className="mx-5 lg:mx-60 mb-10">
       <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
