@@ -5,6 +5,7 @@ import Bitcoin from './routes/Bitcoin'
 import Navbar from './routes/Navbar'
 import ManageNodes from './routes/ManageNodes'
 import Blocks from './routes/Blocks'
+import Monitor from './routes/Monitor'
 
 export const GlobalContext = createContext({});
 
@@ -47,6 +48,7 @@ function App() {
               <Route path='/bitcoin' element={<Bitcoin/>} />
               <Route path='/blocks' element={<Blocks/>}/>'
               <Route path='/nodes' element={<ManageNodes/>} />
+              <Route path='/monitor' element={<Monitor/>} />
             </Routes>
           </div>
         </GlobalContext.Provider>

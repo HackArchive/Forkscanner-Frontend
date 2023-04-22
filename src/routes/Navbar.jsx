@@ -4,6 +4,8 @@ import logo from "../assests/logo.png";
 import btc from "../assests/btc.png";
 import lt from "../assests/lightning.png";
 import server from "../assests/server.webp";
+import wifi from "../assests/wifi.webp";
+
 
 function Navbar() {
   const activeClass =
@@ -46,6 +48,16 @@ function Navbar() {
           <div className="flex flex-row  m-auto justify-center">
             <img src={server} alt="nodes logo" className="w-6 h-6 mx-2 " />
             <div className="">Manage Nodes</div>
+          </div>
+        </NavLink>
+
+        <NavLink
+          className={({ isActive }) => (isActive ? activeClass : inActiveClass)}
+          to="/monitor" class =""
+        >
+          <div className="flex flex-row  m-auto justify-center">
+            <img src={wifi} alt="nodes logo" className="w-6 h-6 mx-2 " />
+            <div className="">Monitor</div>
           </div>
         </NavLink>
       </div>
