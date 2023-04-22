@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../App";
-import { get_block, tx_active } from "../utils";
+import { get_block, tx_active, get_node } from "../utils";
 import { CgSearch } from "react-icons/cg";
 
 function Bitcoin() {
@@ -8,6 +8,7 @@ function Bitcoin() {
   const { nodes, blockInfo, chainTips, setBlockInfo } = useContext(GlobalContext);
   const [filterNode, setFilterNode] = useState(null);
   const [txActiveSearch, setTxActiveSearch] = useState(null);
+  const [bitcoinNodes,setBitcoinNodes] = useState([]);
 
   const searchTxActive = () => {
     tx_active(txActiveSearch).then((res) => {
@@ -48,6 +49,9 @@ function Bitcoin() {
   useEffect(() => {
     if (filterNode !== undefined) {
       getChainTip(filterNode);
+      get_node().then(res=>{
+        setBitcoinNodes(res);
+      }).catch()
     }
   }, [filterNode]);
 
@@ -102,11 +106,29 @@ function Bitcoin() {
         </div>
       </div>
 
-          <div className="relative z-10 flex lg:flex-row flex-col lg:gap-5 mb-10">
-            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-            <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10"></div>
-          </div>
+      <div className="relative z-10 flex lg:flex-row flex-col lg:gap-5 mb-10">
+        {
+          bitcoinNodes.slice(0,3).map(node=>(
+              
+              <div className="shadow-xl bg-secondary rounded-3xl w-full h-60 mt-10">
+                <div className="flex ml-10">
+                  {
+                    node.archive 
+                    ? <p className="text-3xl mt-5 text-[#0bffe7] text-center">NODE {node.rpc_user.toUpperCase()}</p>
+                    : <p className="text-3xl mt-5 text-[#ff0b0b] text-center">NODE {node.rpc_user.toUpperCase()}</p>
+                  }
+                </div>
+                <div className="ml-10 mt-5 text-white">
+                  <p><strong>Node ID:</strong>: {node.id}</p>
+                  <p><strong>RPC Host:</strong>: {node.rpc_host}</p>
+                  <p><strong>RPC Host:</strong>: {node.rpc_port}</p>
+                  <p><strong>Mirror Host: </strong>: {`${node.mirror_host}`}</p>
+                </div>
+              </div>
+
+          ))
+        }
+      </div>
 
     </section>
   );

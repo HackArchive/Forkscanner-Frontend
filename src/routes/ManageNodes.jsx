@@ -87,7 +87,7 @@ export default function ManageNodes() {
       </div>
       <div className="flex items-center justify-center overflow-x-auto rounded-lg mt-10">
         <table className="w-[70%] text-sm text-left shadow-md text-white dark:text-gray-400 ">
-          <thead className=" text-xl uppercase bg-secondary text-gray-400">
+          <thead className=" text-xl uppercase bg-secondary text-white">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Node ID
@@ -99,7 +99,7 @@ export default function ManageNodes() {
                 RPC Port
               </th>
               <th scope="col" className="px-6 py-3">
-                Node
+                Archive
               </th>
               <th scope="col" className="px-6 py-3">
                 Action
@@ -111,11 +111,11 @@ export default function ManageNodes() {
               return (
                 <tr
                   key={data.id}
-                  className=" border-b bg-tertiary border-gray-700 text-[1rem] "
+                  className=" border-b bg-tertiary border-gray-700 text-white text-[1rem] "
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium whitespace-nowrap text-white"
+                    className="px-6 py-4 font-medium whitespace-nowrap "
                   >
                     {data.id}
                   </th>
@@ -125,7 +125,7 @@ export default function ManageNodes() {
                   <td className="px-6 py-4">
                     <button
                       onClick={() => remove_node_call(data.id)}
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      className="font-medium text-red-500  hover:underline"
                     >
                       Remove Node
                     </button>
