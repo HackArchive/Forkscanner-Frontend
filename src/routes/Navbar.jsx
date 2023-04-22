@@ -54,7 +54,6 @@ function Navbar() {
                 isActive ? activeClass : inActiveClass
               }
               to="/nodes"
-              class=""
             >
               <div className="flex flex-row items-center  m-auto justify-center">
                 <FaServer className="text-xl mr-2" />
@@ -66,7 +65,6 @@ function Navbar() {
                 isActive ? activeClass : inActiveClass
               }
               to="/monitor"
-              class=""
             >
               <div className="flex flex-row items-center  m-auto justify-center">
                 <MdOutlineNotificationsActive className="text-xl mr-2" />

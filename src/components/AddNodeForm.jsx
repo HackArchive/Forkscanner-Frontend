@@ -160,7 +160,6 @@ export default function AddNodeForm(props) {
                       name="mirror_rpc_host"
                       id="mirror_rpc_host"
                       placeholder="167.71.141.175"
-                      defaultValue={null}
                       value={mirrorRpcHost}
                       onChange={(e) => {
                         setMirrorRpcHost(e.target.value);

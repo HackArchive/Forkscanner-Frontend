@@ -28,7 +28,7 @@ export default function Monitor() {
                 <p className="text-xl mt-4">You can setup notifications for the RSS feeds below using a service like IFTTT.</p>
 
 
-                <ul class="space-y-4 text-3xl text-white list-decimal list-inside mt-10">
+                <ul className="space-y-4 text-3xl text-white list-decimal list-inside mt-10">
                     <li className="mt-5">
                         Invalid Blocks
                         <p className="mt-2 text-xl">Fork Monitor stores all invalid chaintip blocks in its own database. Invalid blocks are occasionally found and don't have to be a problem (except for the miner), as long as all nodes agree they're invalid.</p>
