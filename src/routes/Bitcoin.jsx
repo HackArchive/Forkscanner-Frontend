@@ -53,10 +53,10 @@ function Bitcoin() {
             <strong>ChainTip:</strong> {blockInfo && blockInfo.hash}
           </span>
         </div>
-        <div className="w-[100px] h-[50px] p-1">
-          <select name="node_id" onChange={(event) => { setFilterNode(event.target.value) }} className="w-full h-full">
+        <div className="w-[100px] h-[50px]">
+          <select name="node_id" onChange={(event) => { setFilterNode(event.target.value) }} className="w-full h-full p-2 rounded-md">
             {
-              nodes.map(node_id => <option value={`${node_id}`}>{node_id}</option>)
+              nodes.map(node_id => <option value={`${node_id}`}>Node {node_id}</option>)
             }
 
           </select>

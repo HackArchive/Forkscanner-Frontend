@@ -2,7 +2,6 @@ import React, {createContext, useState, useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { get_nodes } from './utils'
 import Bitcoin from './routes/Bitcoin'
-import Lightning from './routes/Lightning'
 import Navbar from './routes/Navbar'
 import ManageNodes from './routes/ManageNodes'
 import Blocks from './routes/Blocks'
@@ -43,7 +42,6 @@ function App() {
             <Routes>
               <Route path='/' element={<Bitcoin/>} />
               <Route path='/bitcoin' element={<Bitcoin/>} />
-              <Route path='/lightning' element={<Lightning/>} />
               <Route path='/blocks' element={<Blocks/>}/>'
               <Route path='/nodes' element={<ManageNodes/>} />
             </Routes>
