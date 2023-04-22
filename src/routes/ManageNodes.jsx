@@ -1,12 +1,15 @@
 import { useEffect, useState, useContext } from "react";
 import { get_peers, remove_node, get_node } from "../utils";
 import { GlobalContext } from "../App";
+import {BsPlusSquare} from "react-icons/bs"
+import AddNodeForm from "../components/AddNodeForm";
 
 export default function ManageNodes() {
 
     const { nodes } = useContext(GlobalContext);
     const [nodesData, setNodesData] = useState([]);
     const [nodeRemovedFlag, setNodeRemovedFlag] = useState(false); 
+    const [hideForm, setHideForm] = useState(true);
 
     const populate_nodes = () => {
         get_node()
@@ -15,7 +18,7 @@ export default function ManageNodes() {
     }
 
     const remove_node_call = (node_id) =>{
-        remove_node(node_id).then(result=>{
+        remove_node(6).then(result=>{
             console.log(result)
             if (result==='OK'){
                 alert("Node removed successfully");
@@ -34,9 +37,18 @@ export default function ManageNodes() {
 
     return (
         <>
+            <div className="fixed w-full h-full top-0 left-0 z-10" hidden={hideForm}>
+                <div className="flex w-full h-full bg-transparent justify-center items-center">
+                    <div className="flex w-[50%] h-[80%] bg-gray-800 items-center justify-center rounded-md shadow-md">
+                        <AddNodeForm setHideForm={setHideForm}/> 
+                    </div>
+                </div>
+            </div>
             <div className="flex w-full justify-center mt-10">
                 <p className="text-4xl text-white font-bold">MY NODES</p>
-                
+                <button className="w-max h-max ml-10" onClick={()=>setHideForm(false)}>
+                    <BsPlusSquare className="w-[40px] h-[40px] text-blue-600 hover:text-blue-900"/>
+                </button>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

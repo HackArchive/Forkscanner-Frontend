@@ -106,4 +106,32 @@ export const get_node = async ()=>{
   }
 }
 
+export const add_node = async (name,rpc_host,rpc_port,mirror_rpc_port,user,pass,archive)=>{
+    
+  try{
+
+    let params  = {
+      name,
+      rpc_host,
+      rpc_port,
+      mirror_rpc_port,
+      user,
+      pass,
+      archive
+    }
+
+    let resp = rpc_client.call("add_node",params);
+    let data = (await resp).result;
+    return data;
+
+  
+  } catch (err){
+
+    console.log(err)
+    return null;
+
+  }
+}
+
+
 

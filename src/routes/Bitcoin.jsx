@@ -56,7 +56,7 @@ function Bitcoin() {
         <div className="w-[100px] h-[50px] p-1">
           <select name="node_id" onChange={(event)=>{setFilterNode(event.target.value)}} className="w-full h-full">
             {
-              nodes.map(node_id=><option value={`${node_id}`}>{node_id}</option>)
+              nodes.map(node_id=><option value={`${node_id}`}>Node {node_id}</option>)
             }
             
           </select>
