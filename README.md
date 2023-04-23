@@ -1,6 +1,6 @@
 ## ForkScanner Frontend
 
-![Forkscanner Logo](https://user-images.githubusercontent.com/68425016/233806615-8af2d5ae-665c-4650-b597-77b7e3868bf4.png)
+![Forkscanner Logo](https://github.com/HackArchive/Forkscanner-Frontend/blob/4d27f9aa5d5be151f590ad6a461c5dd3b336c84e/src/assests/logo.png)
 
 ### About Forkscanner 
 [Forkscanner](https://github.com/twilight-project/forkscanner/) is a sophisticated tool designed to actively monitor the Bitcoin blockchain in real-time, providing users with valuable insights into the state of the network. By continuously scanning the blockchain, Forkscanner is able to keep track of various critical aspects of the network's operations, including chain forks, double-spent transactions, replace-by-fee transactions, inflation checks, miner rewards, block templates, fee calculation, and soft forks.
