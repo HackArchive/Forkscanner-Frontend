@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { get_nodes } from "./utils";
 import Bitcoin from "./routes/Bitcoin";
-import Navbar from "./routes/Navbar";
+import Navbar from "./components/Navbar";
 import ManageNodes from "./routes/ManageNodes";
 import Blocks from "./routes/Blocks";
 import Monitor from "./routes/Monitor";
