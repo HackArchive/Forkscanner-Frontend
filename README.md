@@ -18,6 +18,10 @@ This project involves the implementation of a frontend for Forkscanner, as part 
 [setup backend from here](https://github.com/twilight-project/forkscanner/blob/main/README.md)
 
 ## Run Frontend
+```
+    src/config.js
+    change host = "localhost" or your local ip address
+```
 ```sh
     cd Forkscanner-Frontend 
     npm install
