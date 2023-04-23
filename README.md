@@ -32,46 +32,44 @@ Then go to `http://0.0.0.0:3000/` to see the frontend
 # Demo Images
 
 ## Bitcoin Info Bage
-Provide a brief overview of the chaintips of connected nodes and information regarding Bitcoin nodes in a concise format. Additionally, include a search option for active transactions using their transaction hash.
+Displays Info about the chaintips of all the connected nodes and the information about bitcoin nodes running in a consise manner. An option to search for active transcations using transaction hash.
 
-<img alt="LambdaLogs Logs Page" src="https://user-images.githubusercontent.com/68425016/233807187-875a60c9-c756-46e0-8239-af8b9f3610bf.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="bitcoin info" src="https://user-images.githubusercontent.com/97180942/233812912-fde944ff-927f-49ea-a390-9191c5301186.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Blocks ( visual block explorer )
-A block explorer that displays the ten most recent blocks. The user can apply filters or searches based on either the block's hash or its height.
+A block exploere displaying to 10 latest blocks. User can filter/search for blocks using the block_hash or the block_height.
 
-<img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807301-5152fe5c-2e40-4a03-ab5d-d48cbb097a2f.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="blocks" src="https://user-images.githubusercontent.com/97180942/233812934-fd956857-a1e9-4f7b-a221-ab5cb73b6032.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Block Detials
-<img width="1260" alt="image" src="https://user-images.githubusercontent.com/97180942/233812116-7863c59e-dffe-4a21-bd34-c47e495394db.png" style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img width="1260" alt="image" src="https://user-images.githubusercontent.com/97180942/233812968-6083b5b8-8263-4f12-9368-3b26132b9693.png" style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Add Block/Submit Block
-With this feature, you can submit a block by providing the block's JSON and choosing the node from which you wish to submit it.
+This allows you to submit a block using the block_json and selecting the node from which you want to submit the block from.
 
-<img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807345-5b5baa7b-3fcd-47ec-97b2-215f28fb648c.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="add blocks" src="https://user-images.githubusercontent.com/97180942/233812985-43bdff44-09b1-4ba4-954e-9a75b4be8ddc.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
-
 ## Manage Nodes
-Access a streamlined interface to oversee your nodes. This interface allows you to add, remove, and retrieve information about all the connected nodes.
+A consise interface to manage all you nodes, performing add_node, remove_node and get information on all your connected nodes. 
 
-<img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/233807363-a79bf2c8-ef19-474c-8fa5-0be08ba49c49.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="nodes" src="https://user-images.githubusercontent.com/97180942/233812841-2723a074-df4b-4d5a-bfad-e35d51e12078.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Add Node Form
 This can be used to easily add a new node to the forkscanner using the frontend without the need for CLI commands.
 
-<img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/233807385-4ea5f275-cf27-4822-9406-23c94e30c4db.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="Add node form" src="https://user-images.githubusercontent.com/97180942/233812874-83743e61-9db2-41d2-a555-9874f10c04b6.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Subscribe For Push Notifications
-Activate the push notification feature on this page to receive alerts for various events listed on the notifications page, such as forks, stale blocks, and inflated blocks.
+This page enables the push notification feature notifying you on every event mentioned in notifications page, events include notification on forks, stale blocks, inflated blocks, etc.
 
-<img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/233807418-48f6c99b-6f0d-45bf-8d2d-9c93cfa3cf40.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
+<img alt="notification" src="https://user-images.githubusercontent.com/97180942/233813004-04d4b3ce-201f-49c4-aba9-68d6ce591d63.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
-
 
 ### Resources
 - Installed backend from [Scanner-Walkthrough](https://github.com/twilight-project/forkscanner/tree/scanner-walkthrough)
