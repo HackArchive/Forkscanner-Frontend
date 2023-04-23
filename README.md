@@ -32,13 +32,13 @@ Then go to `http://0.0.0.0:3000/` to see the frontend
 # Demo Images
 
 ## Bitcoin Info Bage
-Displays Info about the chaintips of all the connected nodes and the information about bitcoin nodes running in a consise manner. An option to search for active transcations using transaction hash.
+Provide a brief overview of the chaintips of connected nodes and information regarding Bitcoin nodes in a concise format. Additionally, include a search option for active transactions using their transaction hash.
 
 <img alt="LambdaLogs Logs Page" src="https://user-images.githubusercontent.com/68425016/233807187-875a60c9-c756-46e0-8239-af8b9f3610bf.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 ## Blocks ( visual block explorer )
-A block exploere displaying to 10 latest blocks. User can filter/search for blocks using the block_hash or the block_height.
+A block explorer that displays the ten most recent blocks. The user can apply filters or searches based on either the block's hash or its height.
 
 <img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807301-5152fe5c-2e40-4a03-ab5d-d48cbb097a2f.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
@@ -48,14 +48,14 @@ A block exploere displaying to 10 latest blocks. User can filter/search for bloc
 <br /><br />
 
 ## Add Block/Submit Block
-This allows you to submit a block using the block_json and selecting the node from which you want to submit the block from.
+With this feature, you can submit a block by providing the block's JSON and choosing the node from which you wish to submit it.
 
 <img alt="LambdaLogs Status Logs Page" src="https://user-images.githubusercontent.com/68425016/233807345-5b5baa7b-3fcd-47ec-97b2-215f28fb648c.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
 
 
 ## Manage Nodes
-A consise interface to manage all you nodes, performing add_node, remove_node and get information on all your connected nodes. 
+Access a streamlined interface to oversee your nodes. This interface allows you to add, remove, and retrieve information about all the connected nodes.
 
 <img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/233807363-a79bf2c8-ef19-474c-8fa5-0be08ba49c49.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
@@ -67,7 +67,7 @@ This can be used to easily add a new node to the forkscanner using the frontend 
 <br /><br />
 
 ## Subscribe For Push Notifications
-This page enables the push notification feature notifying you on every event mentioned in notifications page, events include notification on forks, stale blocks, inflated blocks, etc.
+Activate the push notification feature on this page to receive alerts for various events listed on the notifications page, such as forks, stale blocks, and inflated blocks.
 
 <img alt="LambdaLogs Status PieChart" src="https://user-images.githubusercontent.com/68425016/233807418-48f6c99b-6f0d-45bf-8d2d-9c93cfa3cf40.png"  style="margin-left:10px; margin-bottom:10px;" width="100%" align="center"/>
 <br /><br />
