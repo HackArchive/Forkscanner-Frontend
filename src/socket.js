@@ -1,3 +1,4 @@
+import { host } from './config';
 
 export default function Subscriptions(setNotification){
      
@@ -10,10 +11,11 @@ export default function Subscriptions(setNotification){
       }
 
     const WebSocket = require('websocket').w3cwebsocket;
+    const ws = new WebSocket(`ws://${host}:8340`);
+
     const gen = Genrator();
     var subscriptions = {};
 
-    const ws = new WebSocket('ws://192.168.1.10:8340');
     ws.addEventListener('open', () => {
     console.log('Sending request');
 
@@ -85,8 +87,23 @@ export default function Subscriptions(setNotification){
             })
         } else if (obj.method == "watched_address_checks") {
             console.log(`Got watched address method: ${JSON.stringify(obj.params)}`);
+            obj.params.map(address => {
+                setNotification(prevNotifications => [{
+                    id: gen.next(),
+                    title: "Update on Address",
+                    message: `Recieved a Update on Address ${address.block} found by Node ${address.node}`
+                },...prevNotifications]);
+            })
+            
         } else if (obj.method == "active_fork") {
             console.log(`Got active fork method: ${JSON.stringify(obj.params)}`);
+            obj.params.map(fork => {
+                setNotification(prevNotifications => [{
+                    id: gen.next(),
+                    title: "Got Active Fork",
+                    message: `Recieved an active fork at block height ${fork.height} with Block hash: ${fork.block} found by Node ${fork.node}`
+                },...prevNotifications]);
+            })
         } else if (obj.method == "validation_checks") {
             console.log(`Got checks method: ${JSON.stringify(obj.params)}`);
         } else if (obj.method == "invalid_block_checks") {

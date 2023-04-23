@@ -1,6 +1,5 @@
+import { rpc_client } from './config';
 
-const { JsonRpc } = require("node-jsonrpc-client");
-export const rpc_client = new JsonRpc("http://192.168.1.10:8339");
 
 export const get_nodes = async () => {
 
